@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/serializers/application';
+export { default } from '@atomizedev/ember-core/serializers/application';

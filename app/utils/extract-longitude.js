@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/extract-longitude';
+export { default } from '@atomizedev/ember-core/utils/extract-longitude';

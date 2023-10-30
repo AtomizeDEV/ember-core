@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/adapters/user';
+export { default } from '@atomizedev/ember-core/adapters/user';

@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/is-proxy';
+export { default } from '@atomizedev/ember-core/utils/is-proxy';

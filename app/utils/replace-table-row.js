@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/replace-table-row';
+export { default } from '@atomizedev/ember-core/utils/replace-table-row';

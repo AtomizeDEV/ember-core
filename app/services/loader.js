@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/services/loader';
+export { default } from '@atomizedev/ember-core/services/loader';

@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/set-column-filter-options';
+export { default } from '@atomizedev/ember-core/utils/set-column-filter-options';

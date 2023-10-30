@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/services/url-search-params';
+export { default } from '@atomizedev/ember-core/services/url-search-params';

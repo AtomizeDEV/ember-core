@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/serialize/normalize-polymorphic-type';
+export { default } from '@atomizedev/ember-core/utils/serialize/normalize-polymorphic-type';

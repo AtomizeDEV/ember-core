@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/is-electron';
+export { default } from '@atomizedev/ember-core/utils/is-electron';

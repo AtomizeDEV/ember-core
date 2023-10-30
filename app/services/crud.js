@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/services/crud';
+export { default } from '@atomizedev/ember-core/services/crud';

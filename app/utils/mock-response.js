@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/mock-response';
+export { default } from '@atomizedev/ember-core/utils/mock-response';

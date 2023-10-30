@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/is-waypoint-record';
+export { default } from '@atomizedev/ember-core/utils/is-waypoint-record';

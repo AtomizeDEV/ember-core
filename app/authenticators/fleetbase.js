@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/authenticators/fleetbase';
+export { default } from '@atomizedev/ember-core/authenticators/fleetbase';

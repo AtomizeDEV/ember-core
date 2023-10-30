@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/get-model-name';
+export { default } from '@atomizedev/ember-core/utils/get-model-name';

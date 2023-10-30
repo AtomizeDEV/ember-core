@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/macros/group-by';
+export { default } from '@atomizedev/ember-core/utils/macros/group-by';

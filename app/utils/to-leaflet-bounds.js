@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/to-leaflet-bounds';
+export { default } from '@atomizedev/ember-core/utils/to-leaflet-bounds';

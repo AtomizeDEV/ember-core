@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/get-with-default';
+export { default } from '@atomizedev/ember-core/utils/get-with-default';

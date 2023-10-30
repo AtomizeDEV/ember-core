@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/ison';
+export { default } from '@atomizedev/ember-core/utils/ison';

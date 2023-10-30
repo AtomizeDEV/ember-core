@@ -1,5 +1,5 @@
 {
-    "name": "@fleetbase/ember-core",
+    "name": "@atomizedev/ember-core",
     "version": "0.1.2",
     "description": "Provides all the core services, decorators and utilities for building a Fleetbase extension for the Console.",
     "keywords": [

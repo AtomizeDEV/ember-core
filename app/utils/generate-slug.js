@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/generate-slug';
+export { default } from '@atomizedev/ember-core/utils/generate-slug';

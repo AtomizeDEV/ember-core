@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/is-iterable';
+export { default } from '@atomizedev/ember-core/utils/is-iterable';

@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/group-by';
+export { default } from '@atomizedev/ember-core/utils/group-by';

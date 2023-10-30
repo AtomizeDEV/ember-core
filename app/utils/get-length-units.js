@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/get-length-units';
+export { default } from '@atomizedev/ember-core/utils/get-length-units';

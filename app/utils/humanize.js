@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/humanize';
+export { default } from '@atomizedev/ember-core/utils/humanize';

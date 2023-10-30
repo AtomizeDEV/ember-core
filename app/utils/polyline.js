@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/polyline';
+export { default } from '@atomizedev/ember-core/utils/polyline';

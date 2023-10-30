@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/copy-to-clipboard';
+export { default } from '@atomizedev/ember-core/utils/copy-to-clipboard';

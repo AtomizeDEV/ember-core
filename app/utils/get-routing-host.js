@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/get-routing-host';
+export { default } from '@atomizedev/ember-core/utils/get-routing-host';

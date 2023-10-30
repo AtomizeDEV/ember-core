@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/transforms/raw';
+export { default } from '@atomizedev/ember-core/transforms/raw';

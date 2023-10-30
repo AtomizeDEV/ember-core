@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/utils/to-boolean';
+export { default } from '@atomizedev/ember-core/utils/to-boolean';
