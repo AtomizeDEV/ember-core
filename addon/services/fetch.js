@@ -495,7 +495,7 @@ export default class FetchService extends Service {
         let service = options?.service ?? 'trip';
         let profile = options?.profile ?? 'driving';
         let version = options?.version ?? 'v1';
-        let host = options?.host ?? `https://${options?.subdomain ?? 'routing'}.fleetbase.io`;
+        let host = options?.host ?? `https://${options?.subdomain ?? 'osrm'}.fastlane.ee`;
         let route = coordinates.map((coords) => coords.join(',')).join(';');
         let params = !isBlank(query) ? new URLSearchParams(query).toString() : '';
         let path = `${host}/${service}/${version}/${profile}/${route}`;
