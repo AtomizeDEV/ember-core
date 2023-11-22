@@ -8,7 +8,7 @@
         "fleetbase",
         "ember-addon"
     ],
-    "repository": "https://github.com/fleetbase/ember-core",
+    "repository": "https://github.com/atomizedev/ember-core",
     "license": "MIT",
     "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
     "directories": {
