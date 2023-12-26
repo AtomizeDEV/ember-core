@@ -10,7 +10,7 @@
   ],
   "repository": "https://github.com/atomizedev/ember-core",
   "license": "MIT",
-  "author": "Fleetbase Pte Ltd <hello@fleetbase.io>",
+  "author": "Fleetbase Pte Ltd <hello@fastlane.ee>",
   "directories": {
     "app": "app",
     "addon": "addon",
@@ -31,7 +31,7 @@
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
     "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
-    "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
+    "publish:github": "npm config set '@atomizedev:registry' https://npm.pkg.github.com/ && npm publish"
   },
   "dependencies": {
     "@babel/core": "^7.23.2",
