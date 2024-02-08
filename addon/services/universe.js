@@ -29,6 +29,10 @@ export default class UniverseService extends Service.extend(Evented) {
         menuItems: A([]),
         menuPanels: A([]),
     };
+    @tracked dashboardWidgets = {
+        defaultWidgets: A([]),
+        widgets: A([]),
+    };
 
     /**
      * Computed property that returns all administrative menu items.
@@ -262,6 +266,42 @@ export default class UniverseService extends Service.extend(Evented) {
         this.trigger('registry.created', this[internalRegistryName]);
 
         return this;
+    }
+
+    /**
+     * Creates multiple registries from a given array of registries. Each registry can be either a string or an array.
+     * If a registry is an array, it expects two elements: the registry name (string) and registry options (object).
+     * If a registry is a string, only the registry name is needed.
+     *
+     * The function iterates over each element in the `registries` array and creates a registry using the `createRegistry` method.
+     * It supports two types of registry definitions:
+     * 1. Array format: [registryName, registryOptions] - where registryOptions is an optional object.
+     * 2. String format: "registryName" - in this case, only the name is provided and the registry is created with default options.
+     *
+     * @param {Array} registries - An array of registries to be created. Each element can be either a string or an array.
+     * @action
+     * @memberof YourComponentOrClassName
+     */
+    @action createRegistries(registries = []) {
+        if (!isArray(registries)) {
+            throw new Error('`createRegistries()` method must take an array.');
+        }
+
+        for (let i = 0; i < registries.length; i++) {
+            const registry = registries[i];
+
+            if (isArray(registry) && registry.length === 2) {
+                let registryName = registry[0];
+                let registryOptions = registry[1] ?? {};
+
+                this.createRegistry(registryName, registryOptions);
+                continue;
+            }
+
+            if (typeof registry === 'string') {
+                this.createRegistry(registry);
+            }
+        }
     }
 
     /**
@@ -654,6 +694,146 @@ export default class UniverseService extends Service.extend(Evented) {
      */
     registerSettingsMenuPanel(title, items = [], options = {}) {
         this.registerMenuPanel('settings', title, items, options);
+    }
+
+    /**
+     * Registers a new dashboard widget in the universe service.
+     *
+     * @method registerDashboardWidgets
+     * @public
+     * @memberof UniverseService
+     * @param {Object} widget - The widget object containing name, component, gridOptions, and options.
+     *   @property {String} name - The name of the widget.
+     *   @property {String} icon - The iron of the widget.
+     *   @property {Function} component - The component associated with the widget.
+     *   @property {Object} gridOptions - The grid options for the widget.
+     *   @property {Object} options - Additional options for the widget.
+     */
+    registerDashboardWidgets(widget) {
+        if (isArray(widget)) {
+            widget.forEach((w) => this.registerDashboardWidgets(w));
+            return;
+        }
+
+        const newWidget = this._createDashboardWidget(widget);
+        this.dashboardWidgets.widgets.pushObject(newWidget);
+        this.trigger('widget.registered', newWidget);
+    }
+
+    /**
+     * Retrieves the widgets registered in the universe service.
+     *
+     * @method getDashboardWidgets
+     * @public
+     * @memberof UniverseService
+     * @returns {Array} An array of registered widgets
+     */
+    getDashboardWidgets() {
+        return this.dashboardWidgets.widgets;
+    }
+
+    /**
+     * Registers a new dashboard widget in the universe service.
+     *
+     * @method registerDefaultDashboardWidgets
+     * @public
+     * @memberof UniverseService
+     * @param {Object} widget - The widget object containing name, component, gridOptions, and options.
+     *   @property {String} name - The name of the widget.
+     *   @property {String} icon - The iron of the widget.
+     *   @property {Function} component - The component associated with the widget.
+     *   @property {Object} gridOptions - The grid options for the widget.
+     *   @property {Object} options - Additional options for the widget.
+     */
+    registerDefaultDashboardWidgets(widget) {
+        if (isArray(widget)) {
+            widget.forEach((w) => this.registerDefaultDashboardWidgets(w));
+            return;
+        }
+
+        const newWidget = this._createDashboardWidget(widget);
+        this.dashboardWidgets.defaultWidgets.pushObject(newWidget);
+        this.trigger('widget.registered', newWidget);
+    }
+
+    /**
+     * Retrieves the widgets registered in the universe service.
+     *
+     * @method getDefaultDashboardWidgets
+     * @public
+     * @memberof UniverseService
+     * @returns {Array} An array of registered widgets
+     */
+    getDefaultDashboardWidgets() {
+        return this.dashboardWidgets.defaultWidgets;
+    }
+
+    /**
+     * Creates a dashboard widget object from the given widget configuration.
+     *
+     * @param {Object} widget - The widget configuration object.
+     * @param {string} widget.widgetId - The unique identifier for the widget.
+     * @param {string} widget.name - The name of the widget.
+     * @param {string} widget.description - The description of the widget.
+     * @param {string} widget.icon - The icon for the widget.
+     * @param {(Function|string)} widget.component - The component class or name for the widget.
+     * @param {Object} widget.grid_options - Grid options for the widget layout.
+     * @param {Object} widget.options - Additional options for the widget.
+     * @returns {Object} A new widget object with properties derived from the input configuration.
+     * @memberof UniverseService
+     */
+    _createDashboardWidget(widget) {
+        // Extract properties from the widget object
+        let { widgetId, name, description, icon, component, grid_options, options } = widget;
+
+        // If component is a definition register to host application
+        if (typeof component === 'function') {
+            const owner = getOwner(this);
+            const widgetId = component.widgetId || widgetId || this._createUniqueWidgetHashFromDefinition(component);
+
+            if (owner) {
+                owner.register(`component:${widgetId}`, component);
+
+                // Update component name
+                component = widgetId;
+            }
+        }
+
+        // Create a new widget object with the extracted properties
+        const newWidget = {
+            widgetId,
+            name,
+            description,
+            icon,
+            component,
+            grid_options,
+            options,
+        };
+
+        return newWidget;
+    }
+
+    /**
+     * Creates a unique hash from a component's definition. This hash is used as an identifier
+     * for the component when a direct identifier (widgetId) or a name is not available.
+     *
+     * @param {Function} component - The component class or constructor function.
+     * @returns {string} A unique hash string representing the component's definition.
+     * @memberof UniverseService
+     */
+    _createUniqueWidgetHashFromDefinition(component) {
+        if (typeof component.toString === 'function') {
+            let definition = component.toString();
+            let hash = 0;
+            for (let i = 0; i < definition.length; i++) {
+                const char = definition.charCodeAt(i);
+                hash = (hash << 5) - hash + char;
+                hash |= 0;
+            }
+            return hash.toString(16);
+        }
+
+        return component.name;
     }
 
     /**
