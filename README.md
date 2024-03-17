@@ -1,6 +1,6 @@
-# @fleetbase/ember-core
+# @atomizedev/ember-core
 
-Ember Core Services, Utilities and Framework for building Fleetbase Extensions in the Console. To start building with Fleetbase, you need to install `@fleetbase/ember-core`, which is built using Ember, a JavaScript framework for building web applications
+Ember Core Services, Utilities and Framework for building Fleetbase Extensions in the Console. To start building with Fleetbase, you need to install `@atomizedev/ember-core`, which is built using Ember, a JavaScript framework for building web applications
 
 ## Compatibility
 
@@ -12,7 +12,7 @@ Ember Core Services, Utilities and Framework for building Fleetbase Extensions i
 
 To install ember-core, run:
 
-`ember install @fleetbase/ember-core`
+`ember install @atomizedev/ember-core`
 
 ## Contributing
 
