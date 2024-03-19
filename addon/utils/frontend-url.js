@@ -15,9 +15,9 @@ export default function frontendUrl(path = '', queryParams = {}) {
     }
 
     if (['local', 'development'].includes(config.environment)) {
-        url += 'fleetbase.dev';
+        url += 'fastlane.ee';
     } else {
-        url += 'fleetbase.io';
+        url += 'fastlane.ee';
     }
 
     url += `/${path}`;
